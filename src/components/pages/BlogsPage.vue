@@ -21,9 +21,7 @@ export default defineComponent({
       name: 'BlogsPage',
       components: {BlogCounts, SearchBox, SectionTitle, Blogs},
       setup() {
-        const blogsUseCase = inject(Keys.BlogsUseCaseKeys)!!
         const state = inject(Keys.WelcomePageStateKeys)!!
-        blogsUseCase.find()
 
         let searchTerm = ref('');
         const updateTerm = (v: string) => searchTerm.value = v

@@ -28,15 +28,17 @@ body {
   top: 0;
 }
 </style>
-<script>
-import Sidebar from "@/components/organisms/Sidebar";
-import {defineComponent} from "@vue/composition-api";
-import Injector from "./injector";
+<script lang="ts">
+import {defineComponent, inject} from "@vue/composition-api";
+import Injector, {Keys} from "./injector";
+import Sidebar from "@/components/organisms/Sidebar.vue";
 
 export default defineComponent({
   components: {Sidebar},
   setup() {
-    new Injector().injectModules();
-  }
+    new Injector().injectModules()
+    const blogsUseCase = inject(Keys.BlogsUseCaseKeys)!!
+    blogsUseCase.find()
+  },
 })
 </script>

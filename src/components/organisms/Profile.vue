@@ -2,7 +2,7 @@
   <div class="profile">
     <Icon/>
     <SectionTitle class="section-title">About Me</SectionTitle>
-    <div class="content">
+    <div class="section-content">
       <p>
         名前：ヒロオカ
       </p>
@@ -13,7 +13,7 @@
     </div>
 
     <SectionTitle class="section-title">About This Site</SectionTitle>
-    <div class="content">
+    <div class="section-content">
       <p>
         このサイトは、私がCSSやフロントエンドの勉強のために作っています。<br/>
         以下の技術スタックや設計手法を使って、作成してます。
@@ -29,27 +29,47 @@
     </div>
 
     <SectionTitle class="section-title">Links</SectionTitle>
-    <div class="content">
+    <div class="section-content">
       <Link src="https://twitter.com/yuya_hirooka">Twitter</Link>
       <Link src="https://github.com/samuraiball">GitHub</Link>
       <Link src="https://yuya-hirooka.hatenablog.com/">はてなブログ</Link>
+    </div>
+
+    <SectionTitle class="section-title">Blog Statistics</SectionTitle>
+    <div class="section-content">
+      <div class="blog-statistics">
+        <div class="latest-post">
+          <p>Latest Posts</p>
+          <div class="blog" v-for="b in blogs">
+            <Card
+                :title='b.title'
+                :link='b.link'
+                summary=''
+                :categories='b.categories'
+                :published='b.published'
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 
-import {defineComponent} from "@vue/composition-api";
+import {defineComponent, PropType} from "@vue/composition-api";
 import Icon from "@/components/molecules/Icon.vue";
 import SectionTitle from "@/components/molecules/SectionTitle.vue";
 import Link from "@/components/molecules/Link.vue";
+import {BlogState} from "@/state/WelcomePageState";
+import Card from "@/components/molecules/Card.vue";
 
 export default defineComponent({
   name: 'Profile',
-  components: {Link, SectionTitle, Icon},
+  components: {Card, Link, SectionTitle, Icon},
   props: {
-    message: String
-  }
+    blogs: Array as PropType<BlogState[]>
+  },
 })
 </script>
 
@@ -62,7 +82,19 @@ export default defineComponent({
 .section-title {
   margin-top: 10px;
 }
-.content {
+
+.section-content {
   margin-left: 10px;
+}
+
+.blog-statistics {
+}
+
+.blog-statistics p {
+  font-size: 23px;
+  margin: 0;
+}
+.blog{
+  margin: 10px;
 }
 </style>
