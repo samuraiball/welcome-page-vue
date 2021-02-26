@@ -22,13 +22,14 @@ export default defineComponent({
   components: {Card},
   props: {
     blogs: Array as PropType<BlogState[]>
-  }
+  },
 })
 </script>
 
 <style scoped>
 .blogs {
 }
+
 .blog {
   margin: 10px;
 }
