@@ -1,5 +1,5 @@
 <template>
-  <Profile :blogs="latestBlogs"/>
+  <Profile :blogs="latestBlogs" :blogs-statistics="state.blogsStatistics"/>
 </template>
 
 <script lang="ts">
@@ -13,12 +13,12 @@ export default defineComponent(
       components: {Profile},
       setup() {
         const state = inject(Keys.WelcomePageStateKeys)!!
-        const latestBlogs = computed(()=> state.blogs.slice(0,3))
+        const latestBlogs = computed(() => state.blogs.slice(0, 3))
         return {
-          latestBlogs
+          latestBlogs,
+          state
         }
       }
-
     }
 )
 </script>

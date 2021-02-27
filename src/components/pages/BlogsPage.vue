@@ -27,7 +27,8 @@ export default defineComponent({
         const updateTerm = (v: string) => searchTerm.value = v
 
         const filteredBlogs =
-            computed(() => state.blogs.filter(b => b.title.includes(searchTerm.value)))
+            computed(() =>
+                state.blogs.filter(b => b.title.toLowerCase().includes(searchTerm.value.toLowerCase())))
         const count =
             computed(() => filteredBlogs.value.length)
 

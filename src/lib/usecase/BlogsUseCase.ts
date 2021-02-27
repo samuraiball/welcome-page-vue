@@ -8,8 +8,13 @@ export default class BlogsUseCase {
     ) {
     }
 
-    async find() {
-        const blogs = await this.blogsPort.find();
+    async load() {
+        const blogs = await this.blogsPort.fetch();
         this.blogsPresenter.set(blogs)
+    }
+
+    async loadStatistics() {
+        const statistics = await this.blogsPort.fetchStatistics();
+        this.blogsPresenter.setStatistics(statistics)
     }
 }

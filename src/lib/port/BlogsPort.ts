@@ -1,5 +1,7 @@
 import {Blogs} from "@/lib/domain/Blogs";
+import BlogsStatistics from "@/lib/domain/Statistics";
 
 export interface BlogsPort {
-    find(): Promise<Blogs>
+    fetch(): Promise<Blogs>
+    fetchStatistics(): Promise<BlogsStatistics>
 }

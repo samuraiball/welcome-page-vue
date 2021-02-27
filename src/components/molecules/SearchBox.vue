@@ -1,5 +1,5 @@
 <template>
-  <input v-model="word" placeholder="Search" @input="updateTerm($event.target.value)"/>
+  <input :word="word" placeholder="Search" @input="updateTerm($event.target.value)"/>
 </template>
 
 <script lang="ts">

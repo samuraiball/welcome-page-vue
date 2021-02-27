@@ -50,6 +50,10 @@
             />
           </div>
         </div>
+        <div class="top-ten-tags">
+          <p>Latest Posts</p>
+          <BarChart :data='tenCategories(blogsStatistics.categories)' :max-num="maxNum"/>
+        </div>
       </div>
     </div>
   </div>
@@ -61,15 +65,27 @@ import {defineComponent, PropType} from "@vue/composition-api";
 import Icon from "@/components/molecules/Icon.vue";
 import SectionTitle from "@/components/molecules/SectionTitle.vue";
 import Link from "@/components/molecules/Link.vue";
-import {BlogState} from "@/state/WelcomePageState";
+import {BlogsStatisticsState, BlogState, CategoryStatisticsState} from "@/state/WelcomePageState";
 import Card from "@/components/molecules/Card.vue";
+import BarChart from "@/components/molecules/BarChart.vue";
+
 
 export default defineComponent({
   name: 'Profile',
-  components: {Card, Link, SectionTitle, Icon},
+  components: {BarChart, Card, Link, SectionTitle, Icon},
   props: {
-    blogs: Array as PropType<BlogState[]>
+    blogs: Array as PropType<BlogState[]>,
+    blogsStatistics: BlogsStatisticsState
   },
+  setup() {
+    const tenCategories =
+        (categories: CategoryStatisticsState[]) => categories.sort((c1, c2,) => c1.number > c2.number ? -1 : 1).slice(0, 10)
+    return {
+      tenCategories,
+      maxNum: 27
+    }
+  }
+
 })
 </script>
 
@@ -88,13 +104,24 @@ export default defineComponent({
 }
 
 .blog-statistics {
+  width: 1024px;
+  display: flex;
 }
 
 .blog-statistics p {
   font-size: 23px;
   margin: 0;
 }
-.blog{
+
+.blog {
   margin: 10px;
+}
+
+.latest-post {
+  width: 50%;
+}
+
+.top-ten-tags {
+  width: 50%;
 }
 </style>

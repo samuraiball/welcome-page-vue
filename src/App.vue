@@ -38,7 +38,8 @@ export default defineComponent({
   setup() {
     new Injector().injectModules()
     const blogsUseCase = inject(Keys.BlogsUseCaseKeys)!!
-    blogsUseCase.find()
+    blogsUseCase.load()
+    blogsUseCase.loadStatistics()
   },
 })
 </script>

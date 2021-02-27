@@ -25,7 +25,8 @@ export default class Injector {
     }
 
     private injectDriver() {
-        provide(Keys.BlogsDriverKeys, new BlogsDriver('http://localhost:8081'))
+        console.log(process.env.WELCOME_API_ENDPONT)
+        provide(Keys.BlogsDriverKeys, new BlogsDriver(process.env.VUE_APP_WELCOME_API_ENDPONT))
     }
 
     private injectPort() {
