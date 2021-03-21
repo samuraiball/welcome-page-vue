@@ -60,7 +60,6 @@
 </template>
 
 <script lang="ts">
-
 import {defineComponent, PropType} from "@vue/composition-api";
 import Icon from "@/components/molecules/Icon.vue";
 import SectionTitle from "@/components/molecules/SectionTitle.vue";

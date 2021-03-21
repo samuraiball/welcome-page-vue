@@ -41,7 +41,6 @@ export default defineComponent({
       }
     }
 )
-
 </script>
 <style scoped>
 .blog-page {
