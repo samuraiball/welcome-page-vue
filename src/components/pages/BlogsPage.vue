@@ -2,17 +2,17 @@
   <div class="blog-page">
     <SectionTitle>Posted Blogs</SectionTitle>
     <div class="search">
-      <SearchBox :word="searchTerm" @updateTerm="updateTerm"/>
-      <BlogCounts :count='count'/>
+      <SearchBox :word="state.searchWord" @updateTerm="updateTerm"/>
+      <BlogCounts :count='state.filteredBlogs.length'/>
     </div>
-    <Blogs :blogs='filteredBlogs'/>
+    <Blogs :blogs='state.filteredBlogs'/>
   </div>
 </template>
 
 <script lang="ts">
 import Blogs from "@/components/organisms/Blogs.vue";
 import {Keys} from "@/injector";
-import {computed, defineComponent, inject, ref} from "@vue/composition-api";
+import {defineComponent, inject} from "@vue/composition-api";
 import SectionTitle from "@/components/molecules/SectionTitle.vue";
 import SearchBox from "@/components/molecules/SearchBox.vue";
 import BlogCounts from "@/components/molecules/BlogCounts.vue";
@@ -22,20 +22,12 @@ export default defineComponent({
       components: {BlogCounts, SearchBox, SectionTitle, Blogs},
       setup() {
         const state = inject(Keys.WelcomePageStateKeys)!!
+        const blogsUseCase = inject(Keys.BlogsUseCaseKeys)!!
 
-        let searchTerm = ref('');
-        const updateTerm = (v: string) => searchTerm.value = v
-
-        const filteredBlogs =
-            computed(() =>
-                state.blogs.filter(b => b.title.toLowerCase().includes(searchTerm.value.toLowerCase())))
-        const count =
-            computed(() => filteredBlogs.value.length)
+        const updateTerm = (v: string) => blogsUseCase.filterByWord(v)
 
         return {
-          count,
-          filteredBlogs,
-          searchTerm,
+          state,
           updateTerm
         }
       }

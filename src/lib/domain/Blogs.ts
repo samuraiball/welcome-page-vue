@@ -4,6 +4,13 @@ export class Blogs extends FCC<Blog> {
     constructor(values: Blog[]) {
         super(values)
     }
+
+    filterBySearchWord(word: string): Blogs {
+        return new Blogs(this.values.filter((b: Blog) => b.title.toLowerCase().includes(word.toLowerCase())))
+    }
+    length(){
+        return this.values.length
+    }
 }
 
 export class Blog {
@@ -21,6 +28,7 @@ export class Categories extends FCC<Category> {
     constructor(values: Category[]) {
         super(values)
     }
+
 }
 
 export class Category {

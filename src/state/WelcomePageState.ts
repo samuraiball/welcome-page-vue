@@ -1,6 +1,9 @@
 export default class WelcomePageState {
     blogs: BlogState[] = []
+    filteredBlogs: BlogState[] = []
     blogsStatistics: BlogsStatisticsState = BlogsStatisticsState.empty()
+    searchWord: string = ""
+    filteredBlogsCounts: number = 0
 }
 
 export class BlogState {
