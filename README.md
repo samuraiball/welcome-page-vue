@@ -1,4 +1,4 @@
-# welcome-page-vue-tmp
+# welcome-page-vue
 
 ## Project setup
 ```
