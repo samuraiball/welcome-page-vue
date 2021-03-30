@@ -8,7 +8,8 @@ export class Blogs extends FCC<Blog> {
     filterBySearchWord(word: string): Blogs {
         return new Blogs(this.values.filter((b: Blog) => b.title.toLowerCase().includes(word.toLowerCase())))
     }
-    length(){
+
+    length() {
         return this.values.length
     }
 }

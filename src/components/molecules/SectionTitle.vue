@@ -13,7 +13,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.text{
+.text {
   font-size: 30px;
 }
 </style>

@@ -14,7 +14,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.count{
+.count {
   color: #808080;
   font-size: 25px;
   margin-left: 10px;

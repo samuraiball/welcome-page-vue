@@ -1,6 +1,7 @@
 <template>
   <a :href="src" target="_blank">
-    --- <slot/>
+    ---
+    <slot/>
   </a>
 </template>
 

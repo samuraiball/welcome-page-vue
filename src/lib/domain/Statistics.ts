@@ -7,16 +7,17 @@ export default class BlogsStatistics {
     }
 }
 
-export class CategoriesStatistics extends FCC<CategoryStatistics>{
+export class CategoriesStatistics extends FCC<CategoryStatistics> {
     constructor(readonly values: CategoryStatistics[]) {
         super(values)
     }
 }
 
-export class CategoryStatistics{
+export class CategoryStatistics {
     constructor(
         readonly name: string,
         readonly number: number
-    ){}
+    ) {
+    }
 }
 

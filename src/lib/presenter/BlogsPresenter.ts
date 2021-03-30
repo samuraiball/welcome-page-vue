@@ -37,7 +37,7 @@ export default class BlogsPresenter {
         this.state.searchWord = word;
     }
 
-    setCounts(value:number){
+    setCounts(value: number) {
         this.state.filteredBlogsCounts = value;
     }
 }
